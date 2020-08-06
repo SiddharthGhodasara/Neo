@@ -16,7 +16,7 @@ Meet Neo, a robot humanoid made from two UR5s and Neobotix mobile base (MPO_500)
 
 #### INSTALLATION
 
-1. Install ROS (Neo has been tested on ROS Melodic, so it is recommended to install the same ROS Distro). If you haven't already installed it install it from the link provided below:-
+1. Install ROS (Neo has been tested on ROS Melodic, so it is recommended to install the same ROS Distro). If you haven't already installed it, install it from the link provided below:-
 
    ROS Melodic install link:  [http://wiki.ros.org/melodic/Installation/Ubuntu]
 
