@@ -1,6 +1,6 @@
 ## Neo
 
-Meet Neo, a pseudo humanoid made from two UR5s and Neobotix mobile base (MPO_500) with a Microsoft Kinect mounted as it's head. The robot's arms are configured with MoveIt to perform all the motion planning while the mobile base is loaded with the navigation stack to perform SLAM, Dynamic obstacle avoidance and path planning. 
+Meet Neo, a robot humanoid made from two UR5s and Neobotix mobile base (MPO_500) with a Microsoft Kinect mounted as it's head. The robot's arms are configured with MoveIt to perform all the motion planning while the mobile base is loaded with the navigation stack to perform SLAM, Dynamic obstacle avoidance and path planning. 
 
  To illustrate Neo's capabilities, a python script which performs a simple place and place maneuver has been added in the scripts folder. This script sends a navigation goal to the robot to reach a location near a table with an object on it. On reaching the table the robot identifies the object's location on the table using the Kinect sensor and picks up the object. Following this, it navigates to another table, placed adjacent to the first one, and places the object on it.
 
@@ -43,7 +43,7 @@ Meet Neo, a pseudo humanoid made from two UR5s and Neobotix mobile base (MPO_500
 3. Clone this repository ,configure the catkin package and make it.
 
    ```
-   git clone 
+   git clone https://github.com/SiddharthGhodasara/Neo.git
    catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release
    catkin_make
    ```
