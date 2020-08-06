@@ -1,8 +1,8 @@
-## NEO 
+## Neo
 
-Meet NEO, a pseudo humanoid made from two UR5s and Neobotix mobile base (MPO_500) with a Microsoft Kinect v1 mounted as it's head. The robot's arms are configured with MoveIt to perform all the motion planning while the mobile base is loaded with the navigation stack to perform SLAM, Dynamic obstacle avoidance and path planning. 
+Meet Neo, a pseudo humanoid made from two UR5s and Neobotix mobile base (MPO_500) with a Microsoft Kinect mounted as it's head. The robot's arms are configured with MoveIt to perform all the motion planning while the mobile base is loaded with the navigation stack to perform SLAM, Dynamic obstacle avoidance and path planning. 
 
- To illustrate NEO's capabilities, a python script which performs a simple place and place maneuver has been added in the scripts folder. This script sends a navigation goal to the robot to reach a location near a table with an object on it. On reaching the table the robot identifies the object's location on the table using the Kinect sensor and picks up the object. Following this, it navigates to another table, placed adjacent to the first one, and places the object on it.
+ To illustrate Neo's capabilities, a python script which performs a simple place and place maneuver has been added in the scripts folder. This script sends a navigation goal to the robot to reach a location near a table with an object on it. On reaching the table the robot identifies the object's location on the table using the Kinect sensor and picks up the object. Following this, it navigates to another table, placed adjacent to the first one, and places the object on it.
 
 
 
@@ -16,7 +16,7 @@ Meet NEO, a pseudo humanoid made from two UR5s and Neobotix mobile base (MPO_500
 
 #### INSTALLATION
 
-1. Install ROS (NEO has been tested on ROS Melodic, so it is recommended to install the same ROS Distro). If you haven't already installed it install it from the link provided below:-
+1. Install ROS (Neo has been tested on ROS Melodic, so it is recommended to install the same ROS Distro). If you haven't already installed it install it from the link provided below:-
 
    ROS Melodic install link:  [http://wiki.ros.org/melodic/Installation/Ubuntu]
 
@@ -92,9 +92,9 @@ rosrun neo_simulation neo_smach.py
 
 #### VIDEO
 
-Watch NEO in action!!!
+Watch Neo in action!!!
 
-<video src="video/NEO_Pick_and_Place.mp4"></video>
+<video src="video/NEO_Pick_and_Place.mp4" width="720" height="480" controls preload></video>
 
 
 
