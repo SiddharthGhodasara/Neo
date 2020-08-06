@@ -1,0 +1,47 @@
+<sdf version="1.5">
+<world name="default">
+    <!--<physics type="ode">
+      <ode>
+        <solver>
+          <type>world</type>
+        </solver>-->
+        <!--<constraints>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0001</contact_surface_layer>
+        </constraints>-->
+     <!-- </ode>
+      <max_step_size>0.003</max_step_size>-->
+      <!--<real_time_factor>1</real_time_factor> 
+      <real_time_update_rate>10</real_time_update_rate>-->
+   <!-- </physics>-->
+    <include>
+        <uri>model://sun</uri>
+    </include>
+    
+    <include>
+        <uri>model://ground_plane</uri>
+    </include>
+    
+    <include>
+        <pose frame="">0 0 0 0 0 0</pose>
+       <uri>model://iscas_museum</uri>
+    </include>
+  
+    <include>
+        <pose frame="">3.938650 8.029755 0 0 0 0</pose>
+       <uri>model://table</uri>
+    </include>
+   
+    <include>
+        <pose frame="">3.939354 7.827825 1.015001</pose>
+       <uri>model://wood_cube_10cm</uri>
+    </include>
+
+    <include>
+        <pose frame="">-2.1420 8.023541 0 0 0 0</pose>
+       <uri>model://table</uri>
+    </include>
+    
+</world>
+</sdf>
+<!--3.888063 7.965505 1.015001 0 -0 0 wood_cube_7_5cm  wood_cube_10cm-->

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="mpo_500">
+
+  <xacro:macro name="camera" params="parent *origin">
+    <link name= "kinect_link">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+         <mesh filename="package://neo_simulation/robots/mpo_500/meshes/MPO_500/kinect.stl"/>    
+        </geometry>
+        <material name = "light_grey">
+         <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+         <mesh filename="package://neo_simulation/robots/mpo_500/meshes/MPO_500/kinect.stl"/>    
+        </geometry>    
+    </collision>
+   </link>
+
+   <link name="camera_link_optical" >
+   </link>
+
+
+<joint name="kinect_joint" type="fixed">
+    <!--<limit lower= "-3.0" upper= "3.0" effort="1" velocity="2" />
+      <axis xyz="0 0 1" />-->
+    <parent link="${parent}"/>
+    <child link="kinect_link"/>
+    <xacro:insert_block name="origin" />
+</joint> 
+
+<joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+    <parent link="kinect_link" />
+    <child link="camera_link_optical" />
+</joint> 
+
+  <gazebo reference="kinect_link">
+    <material>Gazebo/Grey</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+</xacro:macro>
+  
+</robot>
+
+

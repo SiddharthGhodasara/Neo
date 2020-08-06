@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+
+  <include file="$(find mpo_500_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+  </include>
+  
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/mpo_500/joint_states]</rosparam>
+  </node>
+  
+  
+
+  <include file="$(find mpo_500_moveit_config)/launch/move_group.launch">
+    <arg name="publish_monitored_planning_scene" value="true" />
+  </include>
+  
+  <include file="$(find mpo_500_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="true"/>
+    
+  </include>
+   
+  <rosparam command="load" file="$(find mpo_500_moveit_config)/config/sensors_3d.yaml" />
+    <param name="octomap_frame" type="string" value="map" /> 
+    <param name="octomap_resolution" type="double" value="0.025" />
+    <param name="max_range" type="double" value="5.0" />
+
+  
+
+
+  
+
+</launch>

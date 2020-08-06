@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <arg name="software_joystick" value="false"/>
+
+<!---=================================================================================================================================================================-->
+
+  <!--Gazebo World--> 
+ 
+  
+  <include file="$(find neo_simulation)/launch/mpo_500/mpo_500_world.launch">
+  </include>
+
+<!---=================================================================================================================================================================-->
+
+  <!--Robot description to param server-->
+  <param name="robot_description" command="$(find xacro)/xacro '$(find neo_simulation)/robots/mpo_500/mpo_500.urdf.xacro'"/>
+
+  <node name="mpo_500_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+  args="-urdf -param robot_description -model mpo_500" /> <!-- x 4.012 -y 6.978 -z 0.000 -Y 1.5708-->
+  
+  <!--To publish Joint and Robot state  -->
+
+  <include file="$(find neo_simulation)/config/controller/launch/controller_utils.launch"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+  </node>
+
+<!-- Launching wheel controllers -->
+
+  <rosparam file="$(find neo_simulation)/config/controller/arm_controller_ur5.yaml" command="load"/>
+  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" ns="/mpo_500"
+  args="spawn left_arm_controller left_gripper_controller right_arm_controller right_gripper_controller wheel_controller" respawn="false" output="screen"/>
+
+
+<!-- Launching kinematics node -->
+
+  <!-- upload parameters -->
+        <rosparam command="load" ns="kinematics_mecanum" file="$(find neo_kinematics_mecanum)/launch/test_setup.yaml"/>
+  
+  <!-- start simulation node -->
+        <node pkg="neo_kinematics_mecanum" type="neo_kinematics_mecanum_sim_node" ns="kinematics_mecanum" name="neo_kinematics_mecanum_sim_node" respawn="false" output="screen"/>
+
+
+<!---=================================================================================================================================================================-->
+
+ 
+ <!--Neo control Package  **To use teleop-keyboard and joystick, neo_control package must be cloned to the workspace**--> 
+ 
+ <!--if arg software_joystick is set to true-->
+
+ <group if="$(arg software_joystick)">
+   <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_keyboard"  output="screen">
+  </node>
+ </group>
+<!---=================================================================================================================================================================-->
+  
+  <include file="$(find neo_simulation)/pcl/find3d.launch"/>
+  <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find neo_simulation)/pcl/r_config/neo.rviz"/>-->
+  <include file="$(find neo_simulation)/pcl/demo/neopass.launch"/>
+  <node pkg="neo_simulation" type="grab"  name="filter" />
+
+</launch>

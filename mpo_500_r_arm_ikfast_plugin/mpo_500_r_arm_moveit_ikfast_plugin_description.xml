@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<library path="lib/libmpo_500_r_arm_moveit_ikfast_plugin">
+  <class base_class_type="kinematics::KinematicsBase" name="mpo_500_r_arm/IKFastKinematicsPlugin" type="mpo_500_r_arm::IKFastKinematicsPlugin">
+    <description>IKFast61 plugin for closed-form kinematics of mpo_500 r_arm</description>
+  </class>
+</library>

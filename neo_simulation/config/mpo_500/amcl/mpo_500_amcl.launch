@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="env_map" default="$(find neo_simulation)/maps/test_map.yaml" />
+
+  <!-- <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
+      args="0 0 0 0 0 0 map odom 100"/>-->
+
+
+  <!-- MAP SERVER -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg env_map)">
+  </node>
+
+  <node pkg="amcl" type="amcl" name="amcl">
+  	<remap from="scan" to="scan_multi"/>
+  	<rosparam file="$(find neo_simulation)/config/mpo_500/amcl/amcl_config.yaml" command="load" />
+  </node>
+
+</launch>
